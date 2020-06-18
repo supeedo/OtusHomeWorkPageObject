@@ -41,17 +41,9 @@ public class OtusTest extends BaseTest {
                 .setLastName()
                 .setNickName()
                 .setBirdData()
-                .setCountry()
-                .setCity()
-                .setEnglishLevel()
-                .setRelocation()
-                .setWorkType()
                 .addTwoSecondCommunicationField()
                 .addSecondCommunicationFB()
-                //.addSecondCommunicationVK()
-                .setGender()
-                .setCompany()
-                .setPosition();
+                .addSecondCommunicationVK();
     }
 
  //   @Test(description = "Second Test Otus site and validation personal information on cabinet", priority = 2)
