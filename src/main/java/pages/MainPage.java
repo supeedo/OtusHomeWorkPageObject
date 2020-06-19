@@ -48,9 +48,9 @@ public class MainPage extends HelperForUseElement {
         return this;
     }
 
-    public MainPage sendAccountDataInField() {
-        sendDataInElement(emailInput, "login@otus.ru" , driver);
-        sendDataInElement(passwordInput, "password" , driver);
+    public MainPage sendAccountDataInField(String login, String password) {
+        sendDataInElement(emailInput, login , driver);
+        sendDataInElement(passwordInput, password , driver);
         useElement(submitButton, driver);
         return this;
     }

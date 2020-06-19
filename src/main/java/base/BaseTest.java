@@ -17,6 +17,8 @@ public class BaseTest {
 
     DriverFactory driverFactory = new DriverFactory();
     public  WebDriver driver;
+    public String login;
+    public String password;
     protected Logger logger = LogManager.getLogger(BaseTest.class);
     protected Config cfg = ConfigFactory.create(Config.class);
 
@@ -24,6 +26,8 @@ public class BaseTest {
     protected void setUp() {
         String browserType = System.getProperty("browser");
         logger.info("Got a browser name = {}", browserType);
+        login = System.getProperty("login");
+        password = System.getProperty("password");
 
         if (browserType == null) driver = driverFactory.createNewDriver("chrome");
         else driver = driverFactory.createNewDriver(browserType);

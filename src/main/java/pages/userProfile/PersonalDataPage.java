@@ -56,6 +56,7 @@ public class PersonalDataPage extends BasePage {
     @FindBy(css = BIRD_DATE_CSS)
     public WebElement birdDataField;
 
+    //_____________________________________
 
     @FindBy(css = ADD_CONTACT_BUTTON_CSS)
     public WebElement addContactButton;
@@ -111,8 +112,7 @@ public class PersonalDataPage extends BasePage {
     public PersonalDataPage addTwoSecondCommunicationField(){
         guidanceOnElement(addContactButton, driver);
         useElement(addContactButton, driver);
-       // useElement(addContactButton, driver);
-       // guidanceOnElement(englishMenu, driver);
+        useElement(addContactButton, driver);
         return this;
     }
     //  ввод первого дополнительного контакта - Facebook
@@ -129,10 +129,10 @@ public class PersonalDataPage extends BasePage {
     public PersonalDataPage addSecondCommunicationVK(){
         guidanceOnElement(communicationMenuSecond, driver);
         useElement(communicationMenuSecond, driver);
-        guidanceOnElement(communicationVK, driver);
-        useElement(communicationVK, driver);
-        guidanceOnElement(communicationFieldSecond, driver);
-        sendDataInElement(communicationFieldSecond, userData.contactVK, driver);
+      //  guidanceOnElement(communicationVK, driver);
+      //  useElement(communicationVK, driver);
+      //  guidanceOnElement(communicationFieldSecond, driver);
+      //  sendDataInElement(communicationFieldSecond, userData.contactVK, driver);
         return this;
     }
 
