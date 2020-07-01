@@ -1,5 +1,8 @@
 package pages;
 
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,6 +12,8 @@ import utils.HelperForUseElement;
 
 public class MainPage extends HelperForUseElement {
     private WebDriver driver;
+    protected Logger logger = LogManager.getLogger(MainPage.class);
+
     //  //button[@data-modal-id='new-log-reg']
     private final String BUTTON_ENTER_AND_REGISTER_CSS = ".header2__auth.js-open-modal > span";
     private final String USER_PROFILE_BANNER_CSS = "div.header2-menu__icon div.ic-blog-default-avatar";
@@ -43,20 +48,28 @@ public class MainPage extends HelperForUseElement {
         PageFactory.initElements(driver, this);
     }
 
+    // Переход на компонент входа и регистрации
     public MainPage useEnterAndRegister() {
+        logger.info("Went to the login and register page");
         useElement(buttonEnterAndRegister, driver);
         return this;
     }
 
-    public MainPage sendAccountDataInField() {
-        sendDataInElement(emailInput, "login@otus.ru" , driver);
-        sendDataInElement(passwordInput, "password" , driver);
+    // вводим в понял логин и пароль
+    public MainPage sendAccountDataInField( String login, String password ) {
+        logger.info("Email entered");
+        sendDataInElement(emailInput, login, driver);
+        logger.info("Password entered");
+        sendDataInElement(passwordInput, password, driver);
+        logger.info("Submit button used");
         useElement(submitButton, driver);
         return this;
     }
 
+    //  Переход в личный кабинет
     public PersonalDataPage goToPersonalPage() {
-        guidanceOnElement(userProfileBanner,driver);
+        logger.info("Go to Personal page");
+        guidanceOnElement(userProfileBanner, driver);
         useElement(userProfileMenuField, driver);
         return new PersonalDataPage(driver);
     }

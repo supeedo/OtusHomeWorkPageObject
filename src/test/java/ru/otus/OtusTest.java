@@ -22,43 +22,42 @@ import pages.userProfile.PersonalDataPage;
 public class OtusTest extends BaseTest {
     MainPage mainPage;
     PersonalDataPage personalDataPage;
+    private String mainLogin;
+    private String mainPassword;
 
 
     @BeforeMethod
     public void setUpMethod() {
         mainPage = new MainPage(driver);
         personalDataPage = new PersonalDataPage(driver);
+        mainLogin = login;
+        mainPassword = password;
     }
 
     @Test(description = "Test Otus site and personal information on cabinet", priority = 1)
     public void otusFirstTest() {
         mainPage
                 .useEnterAndRegister()
-                .sendAccountDataInField()
+                .sendAccountDataInField(mainLogin, mainPassword)
                 .goToPersonalPage();
         personalDataPage
                 .setFirstName()
                 .setLastName()
                 .setNickName()
                 .setBirdData()
-                .setCountry()
-                .setCity()
+                .addLocation()
                 .setEnglishLevel()
-                .setRelocation()
-                .setWorkType()
-                .addTwoSecondCommunicationField()
                 .addSecondCommunicationFB()
-                //.addSecondCommunicationVK()
-                .setGender()
-                .setCompany()
-                .setPosition();
+                .addSecondCommunicationVK()
+                .saveChanges();
     }
 
- //   @Test(description = "Second Test Otus site and validation personal information on cabinet", priority = 2)
+    @Test(description = "Second Test Otus site and validation personal information on cabinet", priority = 2)
     public void otusSecondTest () {
         mainPage
                 .useEnterAndRegister()
-                .sendAccountDataInField()
+                .sendAccountDataInField(mainLogin, mainPassword)
                 .goToPersonalPage();
+        personalDataPage.checkSavedPersonData();
     }
 }
