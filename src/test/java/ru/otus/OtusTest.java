@@ -38,7 +38,7 @@ public class OtusTest extends BaseTest {
     public void otusFirstTest() {
         mainPage
                 .useEnterAndRegister()
-                .sendAccountDataInField("login", "passwor")
+                .sendAccountDataInField(mainLogin, mainPassword)
                 .goToPersonalPage();
         personalDataPage
                 .setFirstName()
@@ -50,11 +50,11 @@ public class OtusTest extends BaseTest {
                 .addSecondCommunicationVK();
     }
 
- //   @Test(description = "Second Test Otus site and validation personal information on cabinet", priority = 2)
+    @Test(description = "Second Test Otus site and validation personal information on cabinet", priority = 2)
     public void otusSecondTest () {
         mainPage
                 .useEnterAndRegister()
-                .sendAccountDataInField("login", "password")
+                .sendAccountDataInField(mainLogin, mainPassword)
                 .goToPersonalPage();
     }
 }

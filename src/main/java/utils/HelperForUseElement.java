@@ -22,4 +22,7 @@ public class HelperForUseElement {
     public static Boolean waitElementVisible( WebElement element, WebDriver driver ) {
         return new WebDriverWait(driver, 15).until(ExpectedConditions.not(ExpectedConditions.visibilityOf(element)));
     }
+
+    //  проверка количества элементов в контейнере
+   // div.container__row.js-formset-row[data-num='1']
 }

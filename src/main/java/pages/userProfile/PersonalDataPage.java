@@ -37,7 +37,6 @@ public class PersonalDataPage extends BasePage {
     private final String COMMUNICATION_VK_CSS = "(//button[@data-value=\"vk\"])[2]";
 
 
-
     @FindBy(css = FIRST_NAME_CSS)
     public WebElement firstNameField;
 
@@ -79,6 +78,8 @@ public class PersonalDataPage extends BasePage {
     @FindBy(css = COMMUNICATION_VK_CSS)
     public WebElement communicationVK;
 
+    // __________________________________________________________________
+
     //  установка имени и имени на латинице
     public PersonalDataPage setFirstName() {
         firstNameField.clear();
@@ -87,6 +88,7 @@ public class PersonalDataPage extends BasePage {
         sendDataInElement(firstNameLatinField, userData.firstNameLatin, driver);
         return this;
     }
+
     // устанавка фамилии и фамилии на латинице
     public PersonalDataPage setLastName() {
         lastNameField.clear();
@@ -95,12 +97,14 @@ public class PersonalDataPage extends BasePage {
         sendDataInElement(lastNameLatinField, userData.lastNameLatin, driver);
         return this;
     }
+
     //  установка ника
     public PersonalDataPage setNickName() {
         nickNameField.clear();
         sendDataInElement(nickNameField, userData.nickName, driver);
         return this;
     }
+
     // установка даты рождения
     public PersonalDataPage setBirdData() {
         birdDataField.clear();
@@ -109,32 +113,30 @@ public class PersonalDataPage extends BasePage {
     }
 
     //  добавление двух дополнительных полей контактов
-    public PersonalDataPage addTwoSecondCommunicationField(){
-        guidanceOnElement(addContactButton, driver);
+    public PersonalDataPage addTwoSecondCommunicationField() {
         useElement(addContactButton, driver);
         useElement(addContactButton, driver);
-        return this;
-    }
-    //  ввод первого дополнительного контакта - Facebook
-    public PersonalDataPage addSecondCommunicationFB(){
-        guidanceOnElement(communicationMenuFirst, driver);
-        useElement(communicationMenuFirst, driver);
-        guidanceOnElement(communicationFacebook, driver);
-        useElement(communicationFacebook, driver);
-        guidanceOnElement(communicationFieldFirst, driver);
-        sendDataInElement(communicationFieldFirst, userData.contactFB, driver);
-        return this;
-    }
-    //  ввод второго дополнительного контакта  -  VK
-    public PersonalDataPage addSecondCommunicationVK(){
-        guidanceOnElement(communicationMenuSecond, driver);
-        useElement(communicationMenuSecond, driver);
-      //  guidanceOnElement(communicationVK, driver);
-      //  useElement(communicationVK, driver);
-      //  guidanceOnElement(communicationFieldSecond, driver);
-      //  sendDataInElement(communicationFieldSecond, userData.contactVK, driver);
         return this;
     }
 
+    //  ввод первого дополнительного контакта - Facebook
+    public PersonalDataPage addSecondCommunicationFB() {
+        useElement(communicationMenuFirst, driver);
+        useElement(communicationFacebook, driver);
+        sendDataInElement(communicationFieldFirst, userData.contactFB, driver);
+        return this;
+    }
+
+    //  ввод второго дополнительного контакта  -  VK
+    public PersonalDataPage addSecondCommunicationVK() {
+        // guidanceOnElement(communicationMenuSecond, driver);
+        //  useElement(communicationMenuSecond, driver);
+        //  guidanceOnElement(communicationVK, driver);
+        //  useElement(communicationVK, driver);
+        //  guidanceOnElement(communicationFieldSecond, driver);
+        sendDataInElement(communicationFieldSecond, userData.contactVK, driver);
+        return this;
+    }
+//  нужна проверка на количество полей дополнительных контактов
 
 }
