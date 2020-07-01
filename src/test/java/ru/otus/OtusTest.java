@@ -45,9 +45,11 @@ public class OtusTest extends BaseTest {
                 .setLastName()
                 .setNickName()
                 .setBirdData()
-                .addTwoSecondCommunicationField()
+                .addLocation()
+                .setEnglishLevel()
                 .addSecondCommunicationFB()
-                .addSecondCommunicationVK();
+                .addSecondCommunicationVK()
+                .saveChanges();
     }
 
     @Test(description = "Second Test Otus site and validation personal information on cabinet", priority = 2)
@@ -56,5 +58,6 @@ public class OtusTest extends BaseTest {
                 .useEnterAndRegister()
                 .sendAccountDataInField(mainLogin, mainPassword)
                 .goToPersonalPage();
+        personalDataPage.checkSavedPersonData();
     }
 }
